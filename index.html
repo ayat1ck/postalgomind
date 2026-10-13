@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PostAlgoMind — AI-Orchestra | Презентация</title>
+<meta name="description" content="Forward Deployed AI Company. Создаём AI-системы внутри вашего бизнеса.">
+<meta property="og:title" content="PostAlgoMind — AI-Orchestra">
+<meta property="og:description" content="Скачайте презентацию PostAlgoMind">
+<meta property="og:image" content="hero.jpg">
+<style>
+  :root { --blue:#1f5cff; --ink:#0d1530; --muted:#5b6478; --bg:#f4f6fb; --line:#dfe4ef; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif; color:var(--ink); background:var(--bg); }
+  .wrap { max-width:560px; margin:0 auto; padding:20px 16px 40px; }
+  .logo { font-weight:700; font-size:22px; margin:4px 0 16px; }
+  .logo b { color:var(--blue); }
+  .hero { width:100%; border-radius:16px; display:block; box-shadow:0 8px 30px rgba(20,40,120,.12); }
+  h1 { font-size:26px; line-height:1.2; margin:22px 0 6px; }
+  h1 span { color:var(--blue); }
+  .sub { color:var(--muted); margin:0 0 20px; line-height:1.45; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px; margin-bottom:16px; }
+  .card h2 { font-size:18px; margin:0 0 14px; }
+  label { display:block; font-size:14px; font-weight:600; margin:12px 0 6px; }
+  label small { color:var(--muted); font-weight:400; }
+  input, textarea { width:100%; font:inherit; font-size:16px; padding:12px 14px; border:1px solid var(--line); border-radius:10px; background:#fbfcff; }
+  input:focus, textarea:focus { outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(31,92,255,.15); }
+  .check { display:flex; gap:10px; align-items:flex-start; font-weight:400; font-size:13px; color:var(--muted); }
+  .check input { width:auto; margin-top:2px; }
+  .btn { display:block; width:100%; text-align:center; text-decoration:none; border:0; cursor:pointer; margin-top:18px; padding:15px; border-radius:12px; font-size:16px; font-weight:700; background:var(--blue); color:#fff; }
+  .btn:disabled { opacity:.6; cursor:wait; }
+  .btn.ghost { background:#eef2ff; color:var(--blue); }
+  .err { color:#d22; font-size:14px; margin-top:10px; display:none; }
+  .hidden { display:none; }
+  .ok { text-align:center; }
+  .ok .big { font-size:40px; }
+  .contacts a { display:flex; justify-content:space-between; gap:12px; padding:12px 0; border-top:1px solid var(--line); color:var(--ink); text-decoration:none; }
+  .contacts a:first-of-type { border-top:0; }
+  .contacts a span:last-child { color:var(--blue); font-weight:600; text-align:right; word-break:break-all; }
+  footer { text-align:center; color:var(--muted); font-size:12px; margin-top:20px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">PostAlgo<b>Mind</b></div>
+  <img class="hero" src="hero.jpg" alt="PostAlgoMind — Forward Deployed AI Company">
+  <h1>Forward Deployed <span>AI</span> Company</h1>
+  <p class="sub">Создаём AI-системы внутри вашего бизнеса. Оставьте контакты — и скачайте презентацию AI-Orchestra.</p>
+
+  <div class="card" id="formCard">
+    <h2>Получить презентацию</h2>
+    <form id="regForm" novalidate>
+      <label for="name">Имя *</label>
+      <input id="name" name="Имя" autocomplete="name" required>
+
+      <label for="phone">Телефон / WhatsApp *</label>
+      <input id="phone" name="Телефон" type="tel" autocomplete="tel" placeholder="+7 ___ ___ __ __" required>
+
+      <label for="email">Email <small>(необязательно)</small></label>
+      <input id="email" name="Email" type="email" autocomplete="email">
+
+      <label for="company">Компания и должность <small>(необязательно)</small></label>
+      <input id="company" name="Компания" autocomplete="organization">
+
+      <label for="note">Какая задача интересна? <small>(необязательно)</small></label>
+      <textarea id="note" name="Комментарий" rows="2"></textarea>
+
+      <label class="check"><input type="checkbox" id="consent" checked> Согласен(на), чтобы команда PostAlgoMind связалась со мной</label>
+
+      <button class="btn" type="submit" id="submitBtn">Скачать презентацию</button>
+      <div class="err" id="err"></div>
+    </form>
+  </div>
+
+  <div class="card ok hidden" id="doneCard">
+    <div class="big">✅</div>
+    <h2>Спасибо! Мы свяжемся с вами.</h2>
+    <a class="btn" id="dlBtn" href="PostAlgoMind_AI-Orchestra.pdf" download>Скачать презентацию (PDF)</a>
+    <a class="btn ghost" href="PostAlgoMind_AI-Orchestra.pdf" target="_blank" rel="noopener">Открыть в браузере</a>
+  </div>
+
+  <div class="card contacts">
+    <h2>Наши контакты</h2>
+    <a href="tel:+70000000000"><span>Телефон</span><span>+7 000 000 00 00</span></a>
+    <a href="https://wa.me/70000000000" target="_blank" rel="noopener"><span>WhatsApp</span><span>Написать</span></a>
+    <a href="https://t.me/username" target="_blank" rel="noopener"><span>Telegram</span><span>@username</span></a>
+    <a href="mailto:ai_orchestra_main@ai_orchestra_net"><span>Email</span><span>ai_orchestra_main@ai_orchestra_net</span></a>
+  </div>
+
+  <footer>© PostAlgoMind · AI-Orchestra</footer>
+</div>
+
+<script>
+  const LEADS_EMAIL = "ai_orchestra_main@ai_orchestra_net";
+
+  const form = document.getElementById("regForm");
+  const btn = document.getElementById("submitBtn");
+  const err = document.getElementById("err");
+
+  function showDone() {
+    document.getElementById("formCard").classList.add("hidden");
+    document.getElementById("doneCard").classList.remove("hidden");
+  }
+
+  if (localStorage.getItem("pam_registered")) showDone();
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    err.style.display = "none";
+    const name = form.elements["Имя"].value.trim();
+    const phone = form.elements["Телефон"].value.trim();
+    if (!name || phone.replace(/\D/g, "").length < 7) {
+      err.textContent = "Пожалуйста, укажите имя и номер телефона.";
+      err.style.display = "block";
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = "Отправляем…";
+
+    const data = Object.fromEntries(new FormData(form));
+    data["Согласие на связь"] = document.getElementById("consent").checked ? "да" : "нет";
+    data._subject = "Новая заявка с QR — PostAlgoMind AI-Orchestra";
+    data._template = "table";
+    data._captcha = "false";
+
+    // Registrants must get the deck even if the mail service is down, so failures are not surfaced.
+    try {
+      const ctrl = new AbortController();
+      setTimeout(() => ctrl.abort(), 8000);
+      await fetch("https://formsubmit.co/ajax/" + LEADS_EMAIL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(data),
+        signal: ctrl.signal,
+      });
+    } catch (_) {}
+
+    localStorage.setItem("pam_registered", "1");
+    showDone();
+    document.getElementById("dlBtn").click();
+  });
+</script>
+</body>
+</html>
