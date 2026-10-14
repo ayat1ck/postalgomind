@@ -45,27 +45,13 @@
   <div class="logo">PostAlgo<b>Mind</b></div>
   <img class="hero" src="hero.jpg" alt="PostAlgoMind — Forward Deployed AI Company">
   <h1>Forward Deployed <span>AI</span> Company</h1>
-  <p class="sub">Создаём AI-системы внутри вашего бизнеса. Оставьте контакты — и скачайте презентацию AI-Orchestra.</p>
+  <p class="sub">Создаём AI-системы внутри вашего бизнеса. Оставьте номер — и скачайте презентацию AI-Orchestra.</p>
 
   <div class="card" id="formCard">
     <h2>Получить презентацию</h2>
     <form id="regForm" novalidate>
-      <label for="name">Имя *</label>
-      <input id="name" name="Имя" autocomplete="name" required>
-
-      <label for="phone">Телефон / WhatsApp *</label>
+      <label for="phone">Номер телефона</label>
       <input id="phone" name="Телефон" type="tel" autocomplete="tel" placeholder="+7 ___ ___ __ __" required>
-
-      <label for="email">Email <small>(необязательно)</small></label>
-      <input id="email" name="Email" type="email" autocomplete="email">
-
-      <label for="company">Компания и должность <small>(необязательно)</small></label>
-      <input id="company" name="Компания" autocomplete="organization">
-
-      <label for="note">Какая задача интересна? <small>(необязательно)</small></label>
-      <textarea id="note" name="Комментарий" rows="2"></textarea>
-
-      <label class="check"><input type="checkbox" id="consent" checked> Согласен(на), чтобы команда PostAlgoMind связалась со мной</label>
 
       <button class="btn" type="submit" id="submitBtn">Скачать презентацию</button>
       <div class="err" id="err"></div>
@@ -99,10 +85,9 @@
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     err.style.display = "none";
-    const name = form.elements["Имя"].value.trim();
     const phone = form.elements["Телефон"].value.trim();
-    if (!name || phone.replace(/\D/g, "").length < 7) {
-      err.textContent = "Пожалуйста, укажите имя и номер телефона.";
+    if (phone.replace(/\D/g, "").length < 7) {
+      err.textContent = "Пожалуйста, укажите номер телефона.";
       err.style.display = "block";
       return;
     }
@@ -110,7 +95,6 @@
     btn.textContent = "Отправляем…";
 
     const data = Object.fromEntries(new FormData(form));
-    data["Согласие на связь"] = document.getElementById("consent").checked ? "да" : "нет";
     data._subject = "Новая заявка с QR — PostAlgoMind AI-Orchestra";
     data._template = "table";
     data._captcha = "false";
