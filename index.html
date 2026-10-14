@@ -45,76 +45,15 @@
   <div class="logo">PostAlgo<b>Mind</b></div>
   <img class="hero" src="hero.jpg" alt="PostAlgoMind — Forward Deployed AI Company">
   <h1>Forward Deployed <span>AI</span> Company</h1>
-  <p class="sub">Создаём AI-системы внутри вашего бизнеса. Оставьте номер — и скачайте презентацию AI-Orchestra.</p>
+  <p class="sub">Создаём AI-системы внутри вашего бизнеса. Скачайте презентацию AI-Orchestra.</p>
 
-  <div class="card" id="formCard">
-    <h2>Получить презентацию</h2>
-    <form id="regForm" novalidate>
-      <label for="phone">Номер телефона</label>
-      <input id="phone" name="Телефон" type="tel" autocomplete="tel" placeholder="+7 ___ ___ __ __" required>
-
-      <button class="btn" type="submit" id="submitBtn">Скачать презентацию</button>
-      <div class="err" id="err"></div>
-    </form>
-  </div>
-
-  <div class="card ok hidden" id="doneCard">
-    <div class="big">✅</div>
-    <h2>Спасибо! Мы свяжемся с вами.</h2>
-    <a class="btn" id="dlBtn" href="PostAlgoMind_AI-Orchestra.pdf" download>Скачать презентацию (PDF)</a>
+  <div class="card ok">
+    <a class="btn" href="PostAlgoMind_AI-Orchestra.pdf" download>Скачать презентацию (PDF)</a>
     <a class="btn ghost" href="PostAlgoMind_AI-Orchestra.pdf" target="_blank" rel="noopener">Открыть в браузере</a>
   </div>
 
   <footer>© PostAlgoMind · AI-Orchestra</footer>
 </div>
 
-<script>
-  const LEADS_EMAIL = "ayat.ab4y@gmail.com";
-
-  const form = document.getElementById("regForm");
-  const btn = document.getElementById("submitBtn");
-  const err = document.getElementById("err");
-
-  function showDone() {
-    document.getElementById("formCard").classList.add("hidden");
-    document.getElementById("doneCard").classList.remove("hidden");
-  }
-
-  if (localStorage.getItem("pam_registered")) showDone();
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    err.style.display = "none";
-    const phone = form.elements["Телефон"].value.trim();
-    if (phone.replace(/\D/g, "").length < 7) {
-      err.textContent = "Пожалуйста, укажите номер телефона.";
-      err.style.display = "block";
-      return;
-    }
-    btn.disabled = true;
-    btn.textContent = "Отправляем…";
-
-    const data = Object.fromEntries(new FormData(form));
-    data._subject = "Новая заявка с QR — PostAlgoMind AI-Orchestra";
-    data._template = "table";
-    data._captcha = "false";
-
-    // Registrants must get the deck even if the mail service is down, so failures are not surfaced.
-    try {
-      const ctrl = new AbortController();
-      setTimeout(() => ctrl.abort(), 8000);
-      await fetch("https://formsubmit.co/ajax/" + LEADS_EMAIL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(data),
-        signal: ctrl.signal,
-      });
-    } catch (_) {}
-
-    localStorage.setItem("pam_registered", "1");
-    showDone();
-    document.getElementById("dlBtn").click();
-  });
-</script>
 </body>
 </html>
